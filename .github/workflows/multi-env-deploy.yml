@@ -1,0 +1,21 @@
+name: Multi Env Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select an env for deployment"
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy env
+        run: echo "Running on ${{ inputs.environment }}"
